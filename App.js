@@ -1,6 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import Logo from "./react/shared/logo";
 
 export default function App() {
   return (
@@ -12,14 +14,7 @@ export default function App() {
           justifyContent: "center",
         }}
       >
-        <View
-          style={{
-            width: 150,
-            height: 150,
-            backgroundColor: "#f49c14",
-            margin: 10,
-          }}
-        />
+        <Logo />
 
         <Text style={{ width: "80%", textAlign: "center" }}>
           En elolycka kan orsaka allt från mindre allvarliga skador till
@@ -43,7 +38,7 @@ const NavigationButton = (props) => {
   const { text } = props;
 
   return (
-    <Pressable
+    <TouchableOpacity
       style={{
         backgroundColor: "#f49c14",
         borderRadius: 30,
@@ -52,7 +47,7 @@ const NavigationButton = (props) => {
       }}
     >
       <Text style={{ color: "white", padding: 10 }}>{text}</Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 
