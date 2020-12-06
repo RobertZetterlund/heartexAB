@@ -1,11 +1,12 @@
-import { View, Image, StyleSheet } from "react-native";
 import React from "react";
+import FastImage from "react-native-fast-image";
 
 export default Logo = () => {
   return (
-    <Image
-      style={{ height: 150, width: 150, margin:10 }}
+    <FastImage
+      style={{ width: 150, height: 150 }}
       source={require("../../elolycka.png")}
-    ></Image>
+      resizeMode={FastImage.resizeMode.contain}
+    />
   );
 };

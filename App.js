@@ -1,12 +1,23 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import Logo from "./react/shared/logo";
+// In App.js in a new project
 
-export default function App() {
+import * as React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HospitalScreen from "./react/hospital";
+import YouScreen from "./react/you";
+import WorkScreen from "./react/work";
+
+function HomeScreen({ navigation }) {
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "white",
+      }}
+    >
       <View
         style={{
           width: "100%",
@@ -24,18 +35,49 @@ export default function App() {
       </View>
 
       <View style={{ alignItems: "center" }}>
-        <NavigationButton text={"Vad ska du göra?"} />
+        <NavigationButton
+          text={"Vad ska du göra?"}
+          onPress={() => navigation.navigate("You")}
+        />
 
-        <NavigationButton text={"Vad ska sjukvårdspersonal göra?"} />
+        <NavigationButton
+          text={"Vad ska sjukvårdspersonal göra?"}
+          onPress={() => navigation.navigate("Hospital")}
+        />
 
-        <NavigationButton text={"Vad ska arbetsgivare göra?"} />
+        <NavigationButton
+          text={"Vad ska arbetsgivare göra?"}
+          onPress={() => navigation.navigate("Work")}
+        />
       </View>
     </View>
   );
 }
 
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerTintColor: "#f49c14",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="You" component={YouScreen} />
+        <Stack.Screen name="Hospital" component={HospitalScreen} />
+        <Stack.Screen name="Work" component={WorkScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
 const NavigationButton = (props) => {
-  const { text } = props;
+  const { text, onPress } = props;
 
   return (
     <TouchableOpacity
@@ -45,17 +87,10 @@ const NavigationButton = (props) => {
         justifyContent: "center",
         margin: 10,
       }}
+      onPress={onPress}
     >
       <Text style={{ color: "white", padding: 10 }}>{text}</Text>
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+export default App;
