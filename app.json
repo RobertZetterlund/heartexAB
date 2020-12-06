@@ -1,0 +1,12 @@
+{
+  "name": "heartexAB",
+  "displayName": "heartexAB",
+  "expo": {
+    "name": "heartexAB",
+    "slug": "heartexAB",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
