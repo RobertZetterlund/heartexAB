@@ -36,46 +36,33 @@ export default HospitalScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView style={{ width: "100%" }}>
-        <View
-          style={{
-            width: "100%",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <View style={styles.outer_view}>
           <Logo />
 
           <Header text={"Vad sjukvårdspersonal ska göra"} />
 
-          <View
-            style={{
-              width: "100%",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <View style={styles.text_view}>
             {healthcare_personel.map((text) => (
               <LineText text={text} key={text} />
             ))}
           </View>
 
           <Header text={"Var noga med anamnesen"} />
-          <View style={{ width: "70%" }}>
+          <View style={styles.bullet_view}>
             {anamnesen.map((text) => (
               <Bullet text={text} key={text} />
             ))}
           </View>
 
           <Header text={"Rekommenderade medicinska undersökningar"} />
-          <View style={{ width: "70%" }}>
+          <View style={styles.bullet_view}>
             {recommended_med.map((text) => (
               <Bullet text={text} key={text} />
             ))}
           </View>
         </View>
 
-
-        <View style={{height: 50}}/>
+        <View style={{ height: 50 }} />
       </ScrollView>
     </View>
   );
@@ -87,5 +74,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    width: "100%",
   },
+  outer_view: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text_view: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  bullet_view: { width: "70%" },
 });

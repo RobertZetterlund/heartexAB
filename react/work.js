@@ -38,13 +38,7 @@ export default WorkScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView style={{ width: "100%" }}>
-        <View
-          style={{
-            width: "100%",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <View style={styles.outer_view}>
           <Logo />
 
           <Header text={"Vad arbetsgivaren ska göra"} />
@@ -63,13 +57,7 @@ export default WorkScreen = () => {
 
           <Call_122 />
 
-          <View
-            style={{
-              width: "100%",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <View style={styles.text_view}>
             {work_do2.map((text) => (
               <LineText text={text} key={text} />
             ))}
@@ -77,13 +65,7 @@ export default WorkScreen = () => {
 
           <Call_122 />
 
-          <View
-            style={{
-              width: "100%",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <View style={styles.text_view}>
             {work_do3.map((text) => (
               <LineText text={text} key={text} />
             ))}
@@ -96,7 +78,7 @@ export default WorkScreen = () => {
             ))}
           </View>
         </View>
-        <View style={{height: 50}}/>
+        <View style={{ height: 50 }} />
       </ScrollView>
     </View>
   );
@@ -109,4 +91,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  outer_view: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text_view: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  bullet_view: { width: "70%" },
 });
