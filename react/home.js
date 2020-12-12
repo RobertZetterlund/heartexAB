@@ -1,38 +1,47 @@
 // In App.js in a new project
 
 import * as React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 import NavigationButton from "./shared/NavigationButton";
+import LocalizationContext from "./i18n/LocalizationContext";
 
 function HomeScreen({ navigation }) {
+  const { t, i18n } = React.useContext(LocalizationContext);
+
   return (
     <View style={styles.view_container}>
       <View style={styles.upper_container}>
         <Logo />
 
         <Text style={styles.text}>
-          En elolycka kan orsaka allt från mindre allvarliga skador till
-          medvetslöshet och hjärtstopp. Larma 112! Kontakt med sjukvården bör
-          också tas även om elolyckan inte verkat vara så allvarlig.
+          {t("about_accidents")}
         </Text>
       </View>
 
       <View style={styles.lower_container}>
         <NavigationButton
-          text={"Vad ska du göra?"}
+          text={t("what_should_you_do")}
           onPress={() => navigation.navigate("You")}
         />
 
         <NavigationButton
-          text={"Vad ska sjukvårdspersonal göra?"}
+          text={t("what_should_medical_do")}
           onPress={() => navigation.navigate("Hospital")}
         />
 
         <NavigationButton
-          text={"Vad ska arbetsgivare göra?"}
+          text={t("what_should_employer_do")}
           onPress={() => navigation.navigate("Work")}
         />
       </View>
+
+      <Button
+        title={"change language"}
+        onPress={() => {
+          if (i18n.language == "se") i18n.changeLanguage("en");
+          else i18n.changeLanguage("se");
+        }}
+      ></Button>
     </View>
   );
 }

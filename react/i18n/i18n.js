@@ -1,24 +1,19 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+
+const se = require("./lang/se.json");
+const en = require("./lang/en.json");
+
 // the translations
 // (tip: move them in separate JSON files and import them)
+
 const resources = {
   en: {
-    translation: {
-      "screen": "Screen {{ order }}",
-      "tab": "Tab {{ order }}",
-      "change_language_english": "In english",
-      "change_language_french": "In french"
-    }
+    translation: en,
   },
-  fr: {
-    translation: {
-      "screen": "Écran {{ order }}",
-      "tab": "Onglet {{ order }}",
-      "change_language_english": "En anglais",
-      "change_language_french": "En français"
-    }
-  }
+  se: {
+    translation: se,
+  },
 };
 i18n
   .use(initReactI18next)
@@ -26,11 +21,11 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     resources,
-    lng: "en",
-    fallbackLng: 'en',
+    lng: "se",
+    fallbackLng: "se",
     debug: true,
     interpolation: {
-      escapeValue: false
-    }
+      escapeValue: false,
+    },
   });
 export default i18n;
